@@ -1,0 +1,18 @@
+//Задаю переменную для JSON, который буду парсить
+let jsonList = `{
+ "list": [
+  {
+   "name": "Petr",
+   "age": "20",
+   "prof": "mechanic"
+  },
+  {
+   "name": "Vova",
+   "age": "60",
+   "prof": "pilot"
+  }
+ ]
+}`
+//Получаю данные и вывожу их
+let dataBase = JSON.parse(jsonList);
+console.log(dataBase)

@@ -1,0 +1,50 @@
+let btnEl = document.getElementById('btn');
+let inputEl = document.getElementById('number');
+
+//Функция, которая навешивается на кнопку
+
+function change(){
+ 
+  let inputValue = +inputEl.value;
+  
+  //Добавление параметров к URL типа ?name=value
+   let url = new URL('https://picsum.photos/v2/list');
+  url.searchParams.set('limit', inputValue);
+  
+  if (inputValue >= 1 && inputValue <=10){
+    
+ //если попадает в диапазон от 1 до 10, тогда создается запрос XHR  
+  let xhr = new XMLHttpRequest();
+
+   //инициализация запроса 
+    xhr.open("get", url, true);
+    
+    //отправка запроса
+    xhr.send();
+    
+    //присваиваю callback-функцию, которая сработает при успешно отработанном запросе
+  xhr.onload = function() {
+  console.log(`Статус: ${xhr.status}; Результат: ${xhr.response}`)
+};
+    
+    //присваиваю callback-функцию, которая сработает, если запрос завершится ошибкой 
+
+xhr.onerror = function() {
+  console.log(`Ошибка запроса, статус: ${xhr.status}`);
+};
+
+  }
+  
+  //если не попадает в диапазон от 1 до 10
+  
+  else
+    {
+      console.log('Не попадает в диапазон');
+    }
+}
+
+
+btnEl.addEventListener(
+'click',
+  change
+)

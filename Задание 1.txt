@@ -1,0 +1,33 @@
+let xmlList = `<list>
+  <student>
+    <name lang="en">
+      <first>Ivan</first>
+      <second>Ivanov</second>
+    </name>
+    <age>35</age>
+    <prof>teacher</prof>
+  </student>
+  <student>
+    <name lang="ru">
+      <first>Петр</first>
+      <second>Петров</second>
+    </name>
+    <age>58</age>
+    <prof>driver</prof>
+  </student>
+</list>`
+
+let parsing = new DOMParser();
+
+//Начинаю парсить XML
+
+let xmlDOM = parsing.parseFromString(xmlList, "text/xml");
+
+//Получаю все атрибуты и значения, вывожу через forEach 
+
+let studentList = xmlDOM.querySelectorAll("student");
+
+studentList.forEach(element => {
+console.log(`name: ${element.querySelector("first").textContent} ${element.querySelector("second").textContent}, age ${element.querySelector("age").textContent}, prof: ${element.querySelector("prof").textContent}, lang: ${element.querySelector("name").getAttribute("lang")}`
+)
+})

@@ -1,0 +1,28 @@
+.wrap{
+    display:flex;
+    flex-direction:column;
+    margin: 0 auto;
+    width:300px;
+    height:150px;
+    justify-content:space-between;
+}
+
+.input-text{
+    padding:10px 20px;
+    font-size:18px;
+}
+
+.btn{
+    padding:10px 20px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.for-image{
+    width: 100%;
+    height: auto;
+    border: 1px solid green;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: center;
+}
