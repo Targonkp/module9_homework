@@ -1,0 +1,14 @@
+fetch('https://picsum.photos/v2/list?limit=5')
+.then((response)=>{
+  console.log(response.status);
+  return response.json();
+})
+.then((result)=>{
+      let abcEl = result.author;
+      for (let key in result){
+      console.log(result[key].download_url);
+}
+      })
+.catch((error)=>{
+  console.log(`ошибка, статус запроса - ${error.status}`)
+})      

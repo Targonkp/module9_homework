@@ -1,0 +1,38 @@
+let xhr = new XMLHttpRequest();
+
+xhr.open('GET', "https://reqres.in/api/products/3", true);
+xhr.send();
+xhr.onload = function(){
+  //парсим полученные данные в формате JSON
+  let abc = JSON.parse(xhr.responseText);
+  console.log(abc);
+  //присваиваем переменной объект data
+  let abcEl = abc.data;
+  //выводим из объекта data значение color и подставляем в div с id = demo
+ document.getElementById("demo").innerHTML = `${abcEl.color}</br> ${abcEl.id}</br> ${abcEl.name}, </br> ${abcEl.pantone_value}, </br> ${abcEl.year}`;
+}
+xhr.onerror = function(){
+  console.log('Ошибка запроса - повторите запрос');
+}
+
+
+
+//использование fetch
+
+fetch('https://reqres.in/api/products/3')
+.then((response) => {
+  //получаем ответ b декодируем в формате JSON
+  let abc = response.json();
+  return abc;
+})
+  //передаем в следующий then, чтобы получить значения
+.then((data)=>{
+  console.log(data);
+  let abcd = data.data.color;
+  console.log(abcd);
+})
+ //обработка ошибки
+.catch(()=>{
+  console.log('error')
+})
+

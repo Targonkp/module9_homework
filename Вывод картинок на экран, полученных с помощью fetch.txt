@@ -1,0 +1,36 @@
+let resEl = document.querySelector('.resultclass');
+let cards = '';
+
+fetch('https://picsum.photos/v2/list?limit=5')
+.then((response)=>{
+  //получаю статус ответа 
+  console.log(response.status);
+  
+  //декодирую ответ  в формате JSON
+  return response.json();
+})
+.then((result)=>{
+  
+  //применяю к каждому элементу функцию callback
+      result.forEach(item => {
+        //создаю img для каждого элемента и прописываю в него url картинки
+        let newimage = `
+        <img
+          src="${item.download_url}"
+          class="card-image"
+        />
+        <p>${item.author}</p>`;
+        
+        //собираю все элементы
+        cards = cards + newimage;
+      }
+      )    
+      
+      //добавляю список элементов к div с классом resultclass для вывода на экран
+      resEl.innerHTML = cards; 
+      })
+
+
+.catch((error)=>{
+  console.log(`ошибка, статус запроса - ${error.status}`)
+})      
